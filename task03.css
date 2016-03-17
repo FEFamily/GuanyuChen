@@ -10,8 +10,15 @@
 #body{
 	background-color: #eee;
 	border:1px solid #999;
-	height:570px;
+	min-height:570px;
 	width:100%;
+}
+
+#body:after{/*伪类选择器 在后面插入新内容*/
+	width:0;
+	height: 0;
+	display: block;
+	clear: both;/*高度自适应*/
 }
 
 #body #left{
