@@ -148,7 +148,7 @@
 	padding:40px 0 10px 0;
 }
 
-#body .four .border{
+.border{
 	width:30px;
 	height:5px;
 	border-top:2px solid #fff;
@@ -327,4 +327,139 @@
 	position:relative;
 	top:40px;
 	left:150px;
+}
+
+#body .six .right ul{
+	width:100px;
+	height:30px;
+	list-style:none;
+	position:relative;
+	top:65px;
+	left:167px;
+}
+
+#body .six .right ul li{
+	display:inline-block;
+	float:left;
+	width:30px;
+}
+
+#body .six .right ul li div{
+	width: 8px;
+	height: 8px;
+	background-color: #fff; /* Can be set to transparent */
+    border: 1px rgb(148, 148, 148) solid;
+	-webkit-border-radius: 4px;
+}
+
+#body .six .right ul li:first-child div{
+	background-color: rgb(148, 148, 148);
+}
+
+#body .seven{
+	font-size:20px;
+	text-align:center;
+}
+
+#body .seven .red{
+	width:430px;
+	height:520px;
+	display:inline-block;
+	background-color: rgb(232, 79, 81);
+	color:white;
+	float:left;
+}
+
+#body .seven .white{
+	width:420px;
+	height:520px;
+	display:inline-block;
+	background-color:white;
+	color: black;
+	float:left;
+}
+
+#body .seven p:first-child{
+	padding-top: 160px;
+	padding-bottom: 5px;
+}
+
+#body .seven .red .border{
+	border-top:2px solid #fff;
+	margin-top: 20px;
+	padding-bottom:20px;
+}
+
+#body .seven .white .border{
+	border-top:2px solid black;
+	margin-top: 20px;
+	padding-bottom:20px;
+}
+
+#body .seven .more{
+	display:inline-block;
+	width:160px;
+	height:40px;
+	line-height:40px;
+	text-decoration: none;
+	border:1px solid #fff;
+	color:#fff;
+}
+
+#body .seven .white a{
+	border:1px solid rgb(232,79,81);
+	color:rgb(232,79,81);
+}
+
+#body .seven .right{
+	display:inline-block;
+	float:right;
+	width:400px;
+	height:520px;
+	background-image:url(../img/newworld_2.png);
+}
+
+#body .eight{
+	height:250px;
+}
+
+#body .eight p{
+	font-size:12px;
+	text-align: center;
+	color:rgb(154,154,154);
+}
+
+#body .eight p:first-child{
+	font-size:20px;
+	color:black;
+	padding-top:620px;
+}
+
+#body .eight .border{
+	border-bottom:2px solid rgb(232,79,81);
+	margin-bottom: 10px;
+}
+
+#body .nine{
+	position:relative;
+	top:450px;
+	height:400px;
+	margin-top:100px;
+	background-color: #eee;
+}
+#body .nine .left{
+	width:450px;
+	height:400px;
+	display:inline-block;
+	position:relative;
+	top:-170px;
+}
+
+#body .nine .right{
+	width:800px;
+	height:400px;
+	display:inline-block;
+	float:right;
+	position:relative;
+	top:-170px;
 }
