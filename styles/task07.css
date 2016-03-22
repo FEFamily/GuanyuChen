@@ -61,7 +61,7 @@
 
 #body .one{
 	height:700px;
-	background-image:url(../img/bg.jpg);
+	background-image:url(../images/bg.jpg);
 	background-repeat: no-repeat;
 }
 
@@ -138,7 +138,7 @@
 
 #body .four{
 	height:330px;
-	background-image:url(../img/map.jpg);
+	background-image:url(../images/map.jpg);
 }
 
 #body .four p{
@@ -181,7 +181,7 @@
 	display:inline-block;
 	width:20px;
 	height:20px;
-	background-image:url(../img/down.jpg);
+	background-image:url(../images/down.jpg);
 	float:right;
 	margin: 8px;
 }
@@ -219,7 +219,7 @@
 }
 
 #body .four ul li:hover{
-	background:url(../img/more.png) no-repeat left center;
+	background:url(../images/more.png) no-repeat left center;
 	background-color: rgb(232, 79, 81);
 	color:#fff;
 }
@@ -231,7 +231,7 @@
 }
 
 #body .four ul li span:hover{
-	background:url(../img/more.png) no-repeat left center;
+	background:url(../images/more.png) no-repeat left center;
 }
 
 #body .five{
@@ -274,7 +274,7 @@
 	width:850px;
 	height:560px;
 	display:inline-block;
-	background: url(../img/newworld_1.png);
+	background: url(../images/newworld_1.png);
 }
 
 #body .six .left p{
@@ -417,7 +417,7 @@
 	float:right;
 	width:400px;
 	height:520px;
-	background-image:url(../img/newworld_2.png);
+	background-image:url(../images/newworld_2.png);
 }
 
 #body .eight{
