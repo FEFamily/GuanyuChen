@@ -221,6 +221,7 @@
 #body .four ul li:hover{
 	background:url(../img/more.png) no-repeat left center;
 	background-color: rgb(232, 79, 81);
+	color:#fff;
 }
 
 #body .four ul li span{
@@ -445,7 +446,6 @@
 	top:450px;
 	height:400px;
 	margin-top:100px;
-	background-color: #eee;
 }
 #body .nine .left{
 	width:450px;
@@ -462,4 +462,143 @@
 	float:right;
 	position:relative;
 	top:-170px;
+}
+
+#body .nine .caluse{
+	width:280px;
+	height:150px;
+	margin-left: 120px;
+	text-align: left;
+}
+
+#body .nine .bg{
+	font-size:14px;
+	margin-bottom:20px;
+}
+
+#body .nine .sm{
+	font-size:12px;
+	line-height:20px;
+	color:rgb(154,154,154);
+	margin-bottom:10px;
+}
+
+#body .nine .more{
+	font-size:10px;
+	color:rgb(150,150,150);
+	text-align:right;
+}
+
+#body .nine .input{
+	background-color: #eee;
+	width:320px;
+	height:40px;
+	margin:5px 10px 10px 5px;
+	display:inline-block;
+}
+#body .nine label{
+	font-size:12px;
+	line-height:40px;
+	margin-left: 20px;
+}
+
+#body .nine .input input{
+	width:200px;
+	height:20px;
+	border:none;
+	background-color: #eee;
+}
+
+#body .nine .textarea{
+	width:660px;
+	height:180px;
+	background-color: #eee;
+	margin:5px 0 5px 5px;
+}
+
+#body .nine .textarea textarea{
+	margin-left:15px;
+	border:none;
+	background-color: #eee;
+}
+
+
+#body .nine #submit{
+	width:660px;
+	height:40px;
+	border:none;
+	background-color: #eee;
+	margin:5px 0 5px 5px;
+}
+
+#body .ten{
+	height:350px;
+	background-color: rgb(51, 54, 63);
+	margin-top:550px;
+}
+
+#body .ten p{
+	text-align:center;
+	color:#fff;
+	font-size:12px;
+	font-family: "黑体";
+	line-height:20px;
+}
+
+#body .ten p:first-child{
+	font-size: 20px;
+	padding-top: 100px;
+	padding-bottom:12px;
+}
+
+#body .ten input{
+	width:400px;
+	height:40px;
+	border:none;
+	margin-left: 380px;
+	padding-left: 10px;
+}
+
+#body .ten button{
+	width:80px;
+	height:40px;
+	border:none;
+	background-color:rgb(113,113,121);
+	color:#fff;
+	font-size:16px;
+	position:relative;
+	top: 1px;
+}
+
+#body .ten ul{
+	list-style:none;
+	margin-left: 520px;
+	margin-top:40px;
+}
+
+#body .ten ul li{
+	float:left;
+	padding:0px 13px;
+}
+
+#footer{
+	height:50px;
+	background-color: rgb(48,48,58);
+}
+
+#footer p{
+	float:right;
+	font-size:12px;
+	color:#fff;
+	line-height:50px;
+	margin:0 30px 0 80px;
+}
+
+#footer p:first-child{
+	float:left;
+}
+
+#footer a{
+	text-decoration:none;
+	color:#fff;
 }
