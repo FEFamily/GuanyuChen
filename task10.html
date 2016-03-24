@@ -4,9 +4,16 @@
 	<meta charset="UTF-8">
 	<title>第十次任务_Flexbox</title>
 	<style type="text/css">
-		div{
+		.parent{
+			height:400px;
+			display:flex;
+			border:1px solid black;
+			padding:20px;
+		}
+		.div{
 			width:150px;
 			border:1px solid #f00;
+			padding:20px;
 		}
 		.d1{height:120px;}
 		.d2{height:100px;}
@@ -15,12 +22,30 @@
 			height:200px;
 			border-color:#0f0;
 		}
+		@media screen and (min-width: 640px) {
+			.parent{
+				-webkit-flex-flow: row nowrap;
+				justify-content:space-between;/*主轴方向上均匀分布，两边紧贴*/
+				align-items:center;/*侧轴方向上居中*/
+			}
+		}
+		@media screen and (max-width: 640px) {
+			.parent{
+				-webkit-flex-wrap: wrap;
+				align-items:flex-start;/*侧轴方向上紧贴侧轴起始边*/
+				justify-content:space-around;/*主轴方向上均匀分布，两边空白是中间的一半*/
+			}
+			.d4{order:1;}/*顺序在最前面*/
+			.d1,.d2,.d3{order:2;}
+		}
 	</style>
 </head>
 <body>
-	<div class="d1"></div>
-	<div class="d2"></div>
-	<div class="d3"></div>
-	<div class="d4"></div>
+	<div class="parent">
+		<div class="d1 div"></div>
+		<div class="d2 div"></div>
+		<div class="d3 div"></div>
+		<div class="d4 div"></div>
+	</div>
 </body>
 </html>
