@@ -211,7 +211,100 @@ ul li{
 .mobile>div:last-child{
 	height:40px;
 }
-
+/*适配iPhone6 Plus尺寸*/
+@media screen and (min-width:414px){
+	.title{
+		height:55px;
+	}
+	.title>p{
+		font-size:20px;
+		top:-10px;
+	}
+	.return{
+		position:relative;
+		top:15px;
+	}
+	.return p{
+		font-size:18px;
+	}
+	.menu{
+		height:55px;
+	}
+	ul li{
+		height:55px;
+		font-size:20px;
+		border-bottom:8px solid rgb(145, 212, 218);
+	}
+	.label ul li{
+		height:70px;
+	}
+	.label ul li img{
+		width:55px;
+		height:55px;
+	}
+	.row{
+		height:160px;
+		padding-top:15px;
+		padding-bottom:10px;
+		border-top:3px solid rgb(222, 222, 222);
+		border-bottom:15px solid rgb(245, 245, 245);
+	}
+	.col{
+		height:140px;
+		border-right:3px solid rgb(222, 222, 222);
+	}
+	.col h1{
+		font-size:24px;
+	}
+	.col p{
+		padding-top:2px;
+		font-size:20px;
+	}
+	.mod>p{
+		font-size:24px;
+	}
+	.inner{
+		height:110px;
+	}
+	.inner>p{
+		height:50px;
+		line-height:50px;
+		font-size:18px;
+	}
+	.shadow{
+		height:25px;
+	}
+	.art{
+		padding:20px;
+	}
+	.art img{
+		height:85px;
+		padding-right:15px;
+	}
+	.art .text{
+		height:85px;
+	}
+	.art .text>p{
+		font-size:20px;
+	}
+	.art .text>p:last-child,.art .text span{
+		font-size:14px;
+	}
+	.article2 p{
+		padding:10px 0;
+		font-size:20px;
+	}
+	.article2 p:last-child,.article2 p span{
+		font-size:12px;
+	}
+	.article2 img{
+		padding-right:10px;
+	}
+	.mobile>div:last-child{
+		height:50px;
+	}
+}
+/*适配iPad尺寸*/
 @media screen and (min-width: 768px){
 	.title{
 		height:65px;
