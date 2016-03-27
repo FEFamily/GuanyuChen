@@ -3,24 +3,73 @@
   <head>
     <meta charset="utf-8">
     <title>第十七次任务_零基础JavaScript编码(五)</title>
-    <script src="task17.js"></script>
+    <style type="text/css">
+		*{padding:0;margin:0;font-family: "微软雅黑";font-size:18px;}
+		fieldset{
+			width:1000px;
+			height:100px;
+			margin: 20px auto;
+			border-radius:20px;
+		}
+		label span{
+			display:inline-block;
+			width:50px;
+			height:50px;
+			margin:10px;
+			line-height:50px;
+			border:1px solid #000;
+			border-radius:25px;
+			text-align:center;
+		}
+		label input{
+			position:relative;
+			width:50px;
+			height:50px;
+			top:20px;
+			left:-65px;
+			opacity:0;
+			cursor: pointer;
+		}
+		select{
+			width:120px;
+			height:30px;
+			margin-left:50px;
+			padding-left:35px;
+			appearance:none;
+			-moz-appearance:none; /* Firefox */
+			-webkit-appearance:none; /* Safari 和 Chrome */
+		}
+    </style>
   </head>
 <body>
   <fieldset id="form-gra-time">
-    <legend>请选择日期粒度：</legend>
-    <label>日<input name="gra-time" value="day" type="radio" checked="checked"></label>
-    <label>周<input name="gra-time" value="week" type="radio"></label>
-    <label>月<input name="gra-time" value="month" type="radio"></label>
-  </fieldset>
-
-  <fieldset>
-    <legend>请选择查看的城市：</legend>
+    <legend>请选择日期粒度及城市</legend>
+    <label>
+    	<span>日</span>
+    	<input name="gra-time" value="day" type="radio" checked="checked">
+    </label>
+    <label>
+    	<span>周</span>
+    	<input name="gra-time" value="week" type="radio">
+    </label>
+    <label>
+    	<span>月</span>
+    	<input name="gra-time" value="month" type="radio">
+    </label>
     <select id="city-select">
       <option>北京</option>
+      <option>上海</option>
+      <option>广州</option>
+      <option>深圳</option>
+      <option>成都</option>
+      <option>西安</option>
+      <option>福州</option>
+      <option>厦门</option>
+      <option>沈阳</option>
     </select>
   </fieldset>
-
   <div class="aqi-chart-wrap">
   </div>
+  <script type="text/javascript" src="./scripts/task17.js"></script>
 </body>
 </html>
