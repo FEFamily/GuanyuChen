@@ -31,44 +31,93 @@
 		}
 		ul{
 			list-style: none;
-			float:left;
 		}
 		.tips{
 			position:absolute;
-			top:475px;
-			left:420px;
 			z-index:2;
 		}
-		.tips>li{
+		.tips>a{
 			width:25px;
 			height:25px;
+			text-decoration:none;
+			float:left;
+			margin:5px;
 			background-color: #eee;
 			color:black;
 			opacity:0.4;
 			text-align:center;
 			line-height:25px;
 			display:inline-block;
-			cursor: pointer;
 		}
-		.tips>li:nth-child(1):hover{
-			
+		#wrap{
+			width:300px;
+			height:200px;
+			overflow:hidden; 
+			position:relative;
 		}
-		@-webkit-keyframes myfirst{
-			from{margin-left:0px;}
-			to{margin-left:-200px;}
+		.images{
+			width:300%;
+			text-align:center;
+			line-height:200px;
+			font-size:40px;
+			-webkit-animation: myfirst 3s ease-out infinite;
 		}
 		.images>li{
-			display:inline-block;
-			width:200px;
-			height:200px;
-			position:absolute;
-			top:300px;
-			left:300px;
-		}
-		.images>li>img{
-			width:200px;
+			float:left;
+			width:300px;
 			height:200px;
 		}
+		.images>li:nth-child(1){
+			background-color: #FF6A6A;
+			
+		}
+		.images>li:nth-child(2){
+			background-color: #DDA0DD;
+		}
+		.images>li:nth-child(3){
+			background-color: #E0FFFF;
+		}
+		#img1:target~.images{
+			-webkit-animation-name: myfirst;
+		}
+		#img2:target~.images{
+			-webkit-animation-name: mysecond;
+		}
+		#img3:target~.images{
+			-webkit-animation-name: mythird;
+		}
+		@-webkit-keyframes myfirst{
+			0%{margin-left:0px;}
+			20%{margin-left:-150px;}
+			40%{margin-left:-300px;}
+			60%{margin-left:-450px;}
+			80%{margin-left:-600px;}
+			100%{margin-left:0;}
+		}
+		@-webkit-keyframes mysecond{
+			0%{margin-left:-300px;}
+			20%{margin-left:-450px;}
+			40%{margin-left:-600px;}
+			60%{margin-left:-600px;}
+			80%{margin-left:0px;}
+			100%{margin-left:-300px;}
+		}
+		@-webkit-keyframes mythird{
+			0%{margin-left:-600px;}
+			20%{margin-left:-600px;}
+			40%{margin-left:0px;}
+			60%{margin-left:0px;}
+			80%{margin-left:-300px;}
+			100%{margin-left:-600px;}
+		}
+		/*纯CSS实现轮播图
+			应用到CSS3的keyframes animation
+			主要思想是操纵margin-left的变化来实现轮播的效果
+			还需要注意的地方是~操作符
+			A~B A和B一定是同一个父元素下的子元素
+			在这里通过a标签指向锚点的方式来使.tips里的a标签与span元素相连接
+			也可以通过label与input标签相连接
+		*/
 	</style>
 </head>
 <body>
@@ -130,15 +179,20 @@
 		</tr>
 	</table>
 	<input type="text" id="name" name="username">
-	<ul class="tips">
-		<li>1</li>
-		<li>2</li>
-		<li>3</li>
-	</ul>
-	<ul class="images">
-		<li><img src="./images/activity_1.png" alt="轮播图1"></li>
-		<li><img src="./images/activity_2.jpg" alt="轮播图2"></li>
-		<li><img src="./images/activity_3.jpg" alt="轮播图3"></li>
-	</ul>
+	<div id="wrap">
+		<span id="img1"></span>
+		<span id="img2"></span>
+		<span id="img3"></span>
+		<div class="tips">
+			<a id="first" href="#img1">1</a>
+			<a id="second" href="#img2">2</a>
+			<a id="third" href="#img3">3</a>
+		</div>
+		<ul class="images">
+			<li>1</li>
+			<li>2</li>
+			<li>3</li>
+		</ul>
+	</div>
 </body>
 </html>
