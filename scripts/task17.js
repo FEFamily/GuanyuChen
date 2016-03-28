@@ -85,15 +85,7 @@ function citySelectChange() {
  * 初始化日、周、月的radio事件，当点击时，调用函数graTimeChange
  */
 function initGraTimeForm() {
-  var spa = document.getElementsByTagName("span");
-  for(var i=0;i<spa.length;i++){
-    spa[i].onclick = function(event){
-      /* Act on the event */
-      console.log(this);
-      this.style.backgroundColor = "black";
-      this.style.color = "#fff"
-    };
-  }
+  
 }
 
 /**
