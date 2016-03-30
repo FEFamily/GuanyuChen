@@ -62,15 +62,16 @@ function renderChart(page,data) {
   //高度根据数据计算
   var main = document.getElementById("main");
   if(page.nowGraTime == 'day'){
-    //当某一粒度显示时，其他粒度的div隐藏
-    var w = document.getElementsByName('week');
-    for(var i=0;i<w.length;i++){
-      w[i].style.display = 'none';
+    //每次渲染新的粒度的图表，之前的图表都删除
+    var w = document.getElementsByClassName('week');
+    for(var i=w.length-1;i>=0;i--){
+      main.removeChild(w[0]);
     }
-    var m = document.getElementsByName('month');
-    for(var i=0;i<m.length;i++){
-      m[i].style.display = 'none';
+    var m = document.getElementsByClassName('month');
+    for(var i=m.length-1;i>=0;i--){
+      main.removeChild(m[0]);
     }
+
     for(var i=1;i<92;i++){
       var tem = document.createElement('div')
       // var he = data[page.]
@@ -80,14 +81,15 @@ function renderChart(page,data) {
     }
   }else if (pageState.nowGraTime == 'week') {
     //当某一粒度显示时，其他粒度的div隐藏
-    var w = document.getElementsByName('day');
-    for(var i=0;i<w.length;i++){
-      w[i].style.display = 'none';
+    var d = document.getElementsByClassName('day');
+    for(var i=d.length-1;i>=0;i--){
+      main.removeChild(d[0]);
     }
-    var m = document.getElementsByName('month');
-    for(var i=0;i<m.length;i++){
-      m[i].style.display = 'none';
+    var m = document.getElementsByClassName('month');
+    for(var i=m.length-1;i>=0;i--){
+      main.removeChild(m[0]);
     }
+
     for(var i=0;i<91/7;i++){
       var tem = document.createElement('div')
       tem.className = 'week' ;
