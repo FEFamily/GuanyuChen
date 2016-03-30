@@ -55,11 +55,46 @@ var pageState = {
 /**
  * 渲染图表
  */
-function renderChart() {
+function renderChart(page,data) {
   //一个大div 里面采用flex布局
   //取pageState里的数据
   //每一天、周、月都是一个div，宽度由小到大
   //高度根据数据计算
+  var main = document.getElementById("main");
+  if(page.nowGraTime == 'day'){
+    //当某一粒度显示时，其他粒度的div隐藏
+    var w = document.getElementsByName('week');
+    for(var i=0;i<w.length;i++){
+      w[i].style.display = 'none';
+    }
+    var m = document.getElementsByName('month');
+    for(var i=0;i<m.length;i++){
+      m[i].style.display = 'none';
+    }
+    for(var i=1;i<92;i++){
+      var tem = document.createElement('div')
+      // var he = data[page.]
+      tem.className = 'day';
+      tem.style.height = 500 + 'px';
+      var x = main.appendChild(tem);
+    }
+  }else if (pageState.nowGraTime == 'week') {
+    //当某一粒度显示时，其他粒度的div隐藏
+    var w = document.getElementsByName('day');
+    for(var i=0;i<w.length;i++){
+      w[i].style.display = 'none';
+    }
+    var m = document.getElementsByName('month');
+    for(var i=0;i<m.length;i++){
+      m[i].style.display = 'none';
+    }
+    for(var i=0;i<91/7;i++){
+      var tem = document.createElement('div')
+      tem.className = 'week' ;
+      tem.style.height = 550 + 'px';
+      var x = main.appendChild(tem);
+    }    
+  }
 }
 
 /**
@@ -83,7 +118,7 @@ function graTimeChange() {
     //更改时间粒度
     pageState.nowGraTime = this.value;
 
-    renderChart(pageState);
+    renderChart(pageState,aqiSourceData);
     }
   }
   // 设置对应数据

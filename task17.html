@@ -39,17 +39,31 @@
 			-moz-appearance:none; /*Firefox*/
 			-webkit-appearance:none; /* Safari 和 Chrome */
 		}
+		.title p{
+			font-size:16px;
+			text-align:center;
+		}
 		.aqi-chart-wrap{
 			width:1180px;
 			height:600px;
 			border:1px solid #E5E5E5;
 			margin:20px auto;
-			padding:10px;
+			padding:0 10px;
 			border-radius:10px;
+			display:flex;
+			justify-content:space-around;
+			align-items:flex-end;
 		}
-		.aqi-chart-wrap>p{
-			font-size:16px;
-			text-align:center;
+		.aqi-chart-wrap .day{
+			width:6px;
+			background-color: #D1EEEE;
+		}
+		.aqi-chart-wrap .week{
+			width:35px;
+			background-color: #EEEE00;
+		}
+		.aqi-chart-wrap .month{
+
 		}
     </style>
   </head>
@@ -80,8 +94,10 @@
       <option>沈阳</option>
     </select>
   </fieldset>
-  <div class="aqi-chart-wrap">
+  <div class="title">
   	<p><span class="city"></span>市3月到6月<span class="time"></span>空气质量报告</p>
+  </div>
+  <div class="aqi-chart-wrap" id="main">
   </div>
   <script type="text/javascript" src="./scripts/task17.js"></script>
 </body>
