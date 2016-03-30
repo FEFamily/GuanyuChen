@@ -6,7 +6,7 @@
     <style type="text/css">
 		*{padding:0;margin:0;font-family: "微软雅黑";font-size:18px;}
 		fieldset{
-			width:1000px;
+			width:1200px;
 			height:100px;
 			margin: 20px auto;
 			border-radius:20px;
@@ -27,7 +27,7 @@
 			height:50px;
 			top:20px;
 			left:-65px;
-			opacity:0.5;
+			opacity:0;
 			cursor: pointer;
 		}
 		select{
@@ -36,8 +36,20 @@
 			margin-left:50px;
 			padding-left:35px;
 			appearance:none;
-			-moz-appearance:none; /* Firefox */
+			-moz-appearance:none; /*Firefox*/
 			-webkit-appearance:none; /* Safari 和 Chrome */
+		}
+		.aqi-chart-wrap{
+			width:1180px;
+			height:600px;
+			border:1px solid #E5E5E5;
+			margin:20px auto;
+			padding:10px;
+			border-radius:10px;
+		}
+		.aqi-chart-wrap>p{
+			font-size:16px;
+			text-align:center;
 		}
     </style>
   </head>
@@ -69,6 +81,7 @@
     </select>
   </fieldset>
   <div class="aqi-chart-wrap">
+  	<p><span class="city"></span>市3月到6月<span class="time"></span>空气质量报告</p>
   </div>
   <script type="text/javascript" src="./scripts/task17.js"></script>
 </body>

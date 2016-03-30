@@ -56,7 +56,10 @@ var pageState = {
  * 渲染图表
  */
 function renderChart() {
-
+  //一个大div 里面采用flex布局
+  //取pageState里的数据
+  //每一天、周、月都是一个div，宽度由小到大
+  //高度根据数据计算
 }
 
 /**
@@ -64,7 +67,25 @@ function renderChart() {
  */
 function graTimeChange() {
   // 确定是否选项发生了变化 
+  var inp = document.getElementsByName('gra-time');
+  for(var i=0;i<inp.length;i++){
+    //为按钮绑定点击事件
+    inp[i].onclick = function(){
+      for(var j=0;j<inp.length;j++){
+        var tem = inp[j].previousSibling.previousSibling ;
+        tem.style.backgroundColor="white";
+        tem.style.color="black";
+      }
+    var tem2 = this.previousSibling.previousSibling ;
+    tem2.style.backgroundColor="black";
+    tem2.style.color="white";//切换样式
 
+    //更改时间粒度
+    pageState.nowGraTime = this.value;
+
+    renderChart(pageState);
+    }
+  }
   // 设置对应数据
 
   // 调用图表渲染函数
@@ -113,6 +134,7 @@ function init() {
   initGraTimeForm()
   initCitySelector();
   initAqiChartData();
+  graTimeChange();
 }
 
 init();
