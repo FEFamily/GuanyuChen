@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>task18</title>
+	<style type="text/css">
+		.number{
+			width:30px;
+			height:30px;
+			background-color: red;
+			color: #fff;
+			border:none;
+			margin:10px;
+		}
+	</style>
+	<script type="text/javascript">
+		window.onload = function(){
+			var li = document.getElementById('leftin'),
+				ri = document.getElementById('rightin'),
+				lo = document.getElementById('leftout'),
+				ro = document.getElementById('rightout'),
+				div = document.getElementsByClassName('queue')[0],
+				inp = document.getElementsByTagName('input')[0];
+			li.onclick = function(){
+				var num = document.createElement('button');
+				num.innerHTML = inp.value ;
+				num.className = 'number' ;
+				if (inp.value) {
+					div.insertBefore(num,div.childNodes[0]);
+					num.onclick = function(){
+						var re = div.removeChild(this);
+						alert(re.innerHTML);
+					}
+				}
+			}
+			ri.onclick = function(){
+				var num = document.createElement('button');
+				num.innerHTML = inp.value ;
+				num.className = 'number' ;
+				if (inp.value) {
+					div.appendChild(num);
+					num.onclick = function(){
+						var re = div.removeChild(this);
+						alert(re.innerHTML);
+					}
+				}
+			}
+			lo.onclick = function(){
+				if (div.hasChildNodes()) {
+					var re = div.removeChild(div.childNodes[0]);
+					alert(re.innerHTML);
+				}
+			}
+			ro.onclick = function(){
+				if (div.hasChildNodes()) {
+					var re = div.removeChild(div.childNodes[div.childNodes.length-1]);
+					alert(re.innerHTML);
+				}
+			}
+		}
+	</script>
+</head>
+<body>
+	<input type="text">
+	<button id="leftin">左侧入</button>
+	<button id="rightin">右侧入</button>
+	<button id="leftout">左侧出</button>
+	<button id="rightout">右侧出</button>
+	<div class="queue"></div>
+</body>
+</html>
