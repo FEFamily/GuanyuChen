@@ -71,7 +71,9 @@ function renderChart(page,data) {
     remove(main);
 
     var i = pageState.nowSelectCity ;
+    var day = '2016-01-01'
     for(var date in dataArr[i]){
+
       addElement('day',dataArr[i][date]);
     }
   }else if (pageState.nowGraTime == 'week') {
@@ -83,9 +85,17 @@ function renderChart(page,data) {
     for(var date in dataArr[i]){
       sum += dataArr[i][date];
       j++;
-      if(j%7==0){
-        addElement('week',sum/7);
+      if((j-3)%7==0){
+        if(j==3){
+          sum = sum/3;
+        }else{
+          sum = sum/7;
+        }
+        addElement('week',sum);
         sum = 0;
+      }else if(j==91){
+        sum = sum/((91-3)%7)
+        addElement('week',sum);
       }
     }    
   }else{
@@ -119,11 +129,25 @@ function remove(parent){
 }
 
 function addElement(time,hei){
-  var tem = document.createElement('div')
+  var tem = document.createElement('div') ;//图表
   tem.className = time ;
   tem.style.height = hei + 'px';
+  var title = document.createElement('div') ;//提示
+  title.className = 'title';
+  var p1 = document.createElement('p') ;//提示内容
+  p1.innerHTML = '2016-01-01' ;
+  var p2 = document.createElement('p') ;//提示内容
+  p2.innerHTML = hei ;
+  title.appendChild(p1);
+  title.appendChild(p2);
+  tem.appendChild(title);
+  tem.onmouseover = function(){
+    title.style.display = 'block';
+  }
+  tem.onmouseout = function(){
+    title.style.display = 'none';
+  }
   var x = main.appendChild(tem);
-  console.log(2);
 }
 
 /**
