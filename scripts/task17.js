@@ -66,57 +66,66 @@ function renderChart(page,data) {
   //取pageState里的数据
   //每一天、周、月都是一个div，宽度由小到大
   //高度根据数据计算
+  
+  var i = pageState.nowSelectCity ;
   if(page.nowGraTime == 'day'){
     //每次渲染新的粒度的图表，之前的图表都删除
     remove(main);
-
-    var i = pageState.nowSelectCity ;
+ 
     var day = '2016-01-01'
     for(var date in dataArr[i]){
-
-      addElement('day',dataArr[i][date]);
+      addElement('day',dataArr[i][date],date);
     }
   }else if (pageState.nowGraTime == 'week') {
     //每次渲染新的粒度的图表，之前的图表都删除
     remove(main);
 
-    var i = pageState.nowSelectCity ;
     var j=1,sum = 0;
     for(var date in dataArr[i]){
       sum += dataArr[i][date];
-      j++;
-      if((j-3)%7==0){
-        if(j==3){
-          sum = sum/3;
-        }else{
-          sum = sum/7;
+      if ((j-3)%7==0) {
+        if (j==3) {
+          sum = Math.floor(sum/3);
+        } else {
+          sum = Math.floor(sum/7);
         }
-        addElement('week',sum);
+        if (j<=31) {
+          date = "2016-01第"+Math.ceil(j/7)+"周" ;
+        }else if (j<=60) {
+          date = "2016-02第"+Math.ceil((j-31)/7)+"周" ;
+        } else {
+          date = "2016-03第"+Math.ceil((j-59)/7)+"周" ;
+        }
+        addElement('week',sum,date);
         sum = 0;
       }else if(j==91){
         sum = sum/((91-3)%7)
-        addElement('week',sum);
+        date = "2016-03第5周"
+        addElement('week',sum,date);
       }
+      j++;
     }    
   }else{
     //每次渲染新的粒度的图表，之前的图表都删除
     remove(main);
 
-    var i = pageState.nowSelectCity ;
     var j=1,sum = 0;
     for(var date in dataArr[i]){
       sum += dataArr[i][date];
-      j++;
       if (j==31) {
-        addElement('week',sum/31);
+        date = "2016-01"
+        addElement('month',Math.floor(sum/31),date);
         sum = 0;
       }else if (j==60) {
-        addElement('week',sum/31);
+        date = "2016-02"
+        addElement('month',Math.floor(sum/31),date);
         sum = 0;
       }else if (j==91) {
-        addElement('week',sum/31);
+        date = "2016-03"
+        addElement('month',Math.floor(sum/31),date);
         sum = 0;
       }
+      j++;
     }    
   }
 }
@@ -128,14 +137,14 @@ function remove(parent){
   }
 }
 
-function addElement(time,hei){
+function addElement(time,hei,date){
   var tem = document.createElement('div') ;//图表
   tem.className = time ;
   tem.style.height = hei + 'px';
   var title = document.createElement('div') ;//提示
   title.className = 'title';
   var p1 = document.createElement('p') ;//提示内容
-  p1.innerHTML = '2016-01-01' ;
+  p1.innerHTML = date ;
   var p2 = document.createElement('p') ;//提示内容
   p2.innerHTML = hei ;
   title.appendChild(p1);
