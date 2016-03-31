@@ -43,9 +43,6 @@ var aqiSourceData = {
   "沈阳": randomBuildData(500)
 };
 
-// 用于渲染图表的数据
-var chartData = {};
-
 // 记录当前页面的表单选项
 var pageState = {
   nowSelectCity: 0,
@@ -72,7 +69,6 @@ function renderChart(page,data) {
     //每次渲染新的粒度的图表，之前的图表都删除
     remove(main);
  
-    var day = '2016-01-01'
     for(var date in dataArr[i]){
       addElement('day',dataArr[i][date],date);
     }
@@ -130,6 +126,7 @@ function renderChart(page,data) {
   }
 }
 
+//条件更改时删除节点
 function remove(parent){
   var child = parent.childNodes ;
   for(var i=child.length-1;i>=0;i--){
@@ -137,6 +134,7 @@ function remove(parent){
   }
 }
 
+//添加节点的函数
 function addElement(time,hei,date){
   var tem = document.createElement('div') ;//图表
   tem.className = time ;
@@ -180,12 +178,19 @@ function graTimeChange() {
       //更改时间粒度
       pageState.nowGraTime = this.value;
 
+      //更改题目
+      if (this.value == 'day') {
+        document.getElementById('time').innerHTML = '每日' ;
+      } else if (this.value == 'week') {
+        document.getElementById('time').innerHTML = '周' ;
+      } else {
+        document.getElementById('time').innerHTML = '月' ;
+      }
+
+      //调用函数绘制图表
       renderChart(pageState,aqiSourceData);
     }
   }
-  // 设置对应数据
-
-  // 调用图表渲染函数
 }
 
 /**
@@ -203,52 +208,43 @@ function citySelectChange() {
          
         //更改地点粒度
         pageState.nowSelectCity = i;
+        document.getElementById("city").innerHTML = sel.options[i].value;
 
+        //调用函数绘制图表  
         renderChart(pageState,aqiSourceData);
       }
     }
   }
-  // 设置对应数据
-
-  // 调用图表渲染函数
 }
 
 /**
- * 初始化日、周、月的radio事件，当点击时，调用函数graTimeChange
+ * 初始化图表 日期粒度为日 城市为北京
  */
-function initGraTimeForm() {
-  
-}
-
-/**
- * 初始化城市Select下拉选择框中的选项
- */
-function initCitySelector() {
-  // 读取aqiSourceData中的城市，然后设置id为city-select的下拉列表中的选项
-
-  // 给select设置事件，当选项发生变化时调用函数citySelectChange
-
+function initForm() {
+  var inp = document.getElementsByName('gra-time')[0].previousSibling.previousSibling;
+  inp.style.backgroundColor = 'black' ;
+  inp.style.color = 'white' ; 
+  for(var date in dataArr[0]){
+    addElement('day',dataArr[0][date],date);
+  }
 }
 
 /**
  * 初始化图表需要的数据格式
  */
 function initAqiChartData(data) {
-  // 将原始的源数据处理成图表需要的数据格式
-  // 处理好的数据存到 chartData 中
+  // 处理好的数据存到 dataArr 中
   for(var city in data){
     dataArr.push(data[city]);
   }
-  console.log(dataArr); 
 }
 
 /**
  * 初始化函数
  */
 function init() {
-  initGraTimeForm()
-  initCitySelector();
   initAqiChartData(aqiSourceData);
+  initForm();
   graTimeChange();
   citySelectChange();
 }

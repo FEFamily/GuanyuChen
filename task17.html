@@ -39,7 +39,7 @@
 			-moz-appearance:none; /*Firefox*/
 			-webkit-appearance:none; /* Safari 和 Chrome */
 		}
-		.title p{
+		.title p,.title span{
 			font-size:16px;
 			text-align:center;
 		}
@@ -60,17 +60,26 @@
 			background-color: #D1EEEE;
 			transition:height 2s;
 		}
+		.aqi-chart-wrap .day:nth-child(odd){
+			background-color: #EEE9BF;
+		}
 		.aqi-chart-wrap .week{
 			width:35px;
 			height:0px;
 			background-color: #EEEE00;
 			transition:height 2s;
 		}
+		.aqi-chart-wrap .week:nth-child(odd){
+			background-color: #EED5B7;
+		}
 		.aqi-chart-wrap .month{
 			width:200px;
 			height:0px;
 			background-color: #D8BFD8;
 			transition:height 2s;
+		}
+		.aqi-chart-wrap .month:nth-child(odd){
+			background-color: #BBFFFF;
 		}
 		.aqi-chart-wrap .title{
 			width:120px;
@@ -120,7 +129,7 @@
     </select>
   </fieldset>
   <div class="title">
-  	<p><span class="city"></span>市3月到6月<span class="time"></span>空气质量报告</p>
+  	<p><span id="city">北京</span>市1月至3月<span id="time">每日</span>空气质量报告</p>
   </div>
   <div class="aqi-chart-wrap" id="main">
   </div>
