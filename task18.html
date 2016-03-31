@@ -4,6 +4,11 @@
 	<meta charset="UTF-8">
 	<title>task18</title>
 	<style type="text/css">
+		.queue{
+			display:flex;
+			justify-content:flex-start;
+			align-items:flex-end;
+		}
 		.number{
 			width:30px;
 			height:30px;
@@ -23,26 +28,52 @@
 				inp = document.getElementsByTagName('input')[0];
 			li.onclick = function(){
 				var num = document.createElement('button');
-				num.innerHTML = inp.value ;
+				num.style.height = inp.value + 'px' ;
 				num.className = 'number' ;
-				if (inp.value) {
-					div.insertBefore(num,div.childNodes[0]);
-					num.onclick = function(){
-						var re = div.removeChild(this);
-						alert(re.innerHTML);
+				if (div.childNodes.length <= 60) {
+					if (inp.value) {
+						div.insertBefore(num,div.childNodes[0]);
+
+						//每增加一个节点，对div的子节点进行冒泡排序
+						for (var i = 0;i<div.childNodes.length-1;i++) {
+							if (parseInt(div.childNodes[i].style.height, 10) > parseInt(div.childNodes[i+1].style.height, 10)) {
+								var tem = div.childNodes[i].style.height;
+								div.childNodes[i].style.height = div.childNodes[i+1].style.height;
+								div.childNodes[i+1].style.height = tem ;
+							}
+						}
+						num.onclick = function(){
+							var re = div.removeChild(this);
+							// alert(re.innerHTML);
+						}
 					}
+				} else {
+					alert('元素节点已经达到60个');
 				}
 			}
 			ri.onclick = function(){
 				var num = document.createElement('button');
-				num.innerHTML = inp.value ;
+				num.style.height = inp.value + 'px' ;
 				num.className = 'number' ;
-				if (inp.value) {
-					div.appendChild(num);
-					num.onclick = function(){
-						var re = div.removeChild(this);
-						alert(re.innerHTML);
+				if (div.childNodes.length <= 60) {
+					if (inp.value) {
+						div.appendChild(num);
+
+						//每增加一个节点，对div的子节点进行冒泡排序
+						for (var i = 0;i<div.childNodes.length-1;i++) {
+							if (parseInt(div.childNodes[i].style.height, 10) > parseInt(div.childNodes[i+1].style.height, 10)) {
+								var tem = div.childNodes[i].style.height;
+								div.childNodes[i].style.height = div.childNodes[i+1].style.height;
+								div.childNodes[i+1].style.height = tem ;
+							}
+						}
+						num.onclick = function(){
+							var re = div.removeChild(this);
+							// alert(re.innerHTML);
+						}
 					}
+				} else {
+					alert('元素节点已经达到60个');
 				}
 			}
 			lo.onclick = function(){
