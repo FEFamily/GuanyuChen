@@ -48,9 +48,15 @@ var chartData = {};
 
 // 记录当前页面的表单选项
 var pageState = {
-  nowSelectCity: -1,
+  nowSelectCity: 0,
   nowGraTime: "day"
 }
+
+//绘制图表的div
+var main = document.getElementById("main");
+
+//将原始数据对象解析为二维数组
+var dataArr = [];
 
 /**
  * 渲染图表
@@ -60,43 +66,64 @@ function renderChart(page,data) {
   //取pageState里的数据
   //每一天、周、月都是一个div，宽度由小到大
   //高度根据数据计算
-  var main = document.getElementById("main");
   if(page.nowGraTime == 'day'){
     //每次渲染新的粒度的图表，之前的图表都删除
-    var w = document.getElementsByClassName('week');
-    for(var i=w.length-1;i>=0;i--){
-      main.removeChild(w[0]);
-    }
-    var m = document.getElementsByClassName('month');
-    for(var i=m.length-1;i>=0;i--){
-      main.removeChild(m[0]);
-    }
+    remove(main);
 
-    for(var i=1;i<92;i++){
-      var tem = document.createElement('div')
-      // var he = data[page.]
-      tem.className = 'day';
-      tem.style.height = 500 + 'px';
-      var x = main.appendChild(tem);
+    var i = pageState.nowSelectCity ;
+    for(var date in dataArr[i]){
+      addElement('day',dataArr[i][date]);
     }
   }else if (pageState.nowGraTime == 'week') {
-    //当某一粒度显示时，其他粒度的div隐藏
-    var d = document.getElementsByClassName('day');
-    for(var i=d.length-1;i>=0;i--){
-      main.removeChild(d[0]);
-    }
-    var m = document.getElementsByClassName('month');
-    for(var i=m.length-1;i>=0;i--){
-      main.removeChild(m[0]);
-    }
+    //每次渲染新的粒度的图表，之前的图表都删除
+    remove(main);
 
-    for(var i=0;i<91/7;i++){
-      var tem = document.createElement('div')
-      tem.className = 'week' ;
-      tem.style.height = 550 + 'px';
-      var x = main.appendChild(tem);
+    var i = pageState.nowSelectCity ;
+    var j=1,sum = 0;
+    for(var date in dataArr[i]){
+      sum += dataArr[i][date];
+      j++;
+      if(j%7==0){
+        addElement('week',sum/7);
+        sum = 0;
+      }
+    }    
+  }else{
+    //每次渲染新的粒度的图表，之前的图表都删除
+    remove(main);
+
+    var i = pageState.nowSelectCity ;
+    var j=1,sum = 0;
+    for(var date in dataArr[i]){
+      sum += dataArr[i][date];
+      j++;
+      if (j==31) {
+        addElement('week',sum/31);
+        sum = 0;
+      }else if (j==60) {
+        addElement('week',sum/31);
+        sum = 0;
+      }else if (j==91) {
+        addElement('week',sum/31);
+        sum = 0;
+      }
     }    
   }
+}
+
+function remove(parent){
+  var child = parent.childNodes ;
+  for(var i=child.length-1;i>=0;i--){
+    main.removeChild(child[0]);
+  }
+}
+
+function addElement(time,hei){
+  var tem = document.createElement('div')
+  tem.className = time ;
+  tem.style.height = hei + 'px';
+  var x = main.appendChild(tem);
+  console.log(2);
 }
 
 /**
@@ -113,14 +140,14 @@ function graTimeChange() {
         tem.style.backgroundColor="white";
         tem.style.color="black";
       }
-    var tem2 = this.previousSibling.previousSibling ;
-    tem2.style.backgroundColor="black";
-    tem2.style.color="white";//切换样式
+      var tem2 = this.previousSibling.previousSibling ;
+      tem2.style.backgroundColor="black";
+      tem2.style.color="white";//切换样式
 
-    //更改时间粒度
-    pageState.nowGraTime = this.value;
+      //更改时间粒度
+      pageState.nowGraTime = this.value;
 
-    renderChart(pageState,aqiSourceData);
+      renderChart(pageState,aqiSourceData);
     }
   }
   // 设置对应数据
@@ -133,7 +160,21 @@ function graTimeChange() {
  */
 function citySelectChange() {
   // 确定是否选项发生了变化 
+  var sel = document.getElementsByTagName('select')[0];
+  //当select选项改变时
+  sel.onchange = function(){
+    for(var i=0;i<sel.length;i++){
+      //selectedIndex select被选中项的索引
+      if(sel.selectedIndex == i){
+        // console.log(sel.options[i].value);
+         
+        //更改地点粒度
+        pageState.nowSelectCity = i;
 
+        renderChart(pageState,aqiSourceData);
+      }
+    }
+  }
   // 设置对应数据
 
   // 调用图表渲染函数
@@ -159,9 +200,13 @@ function initCitySelector() {
 /**
  * 初始化图表需要的数据格式
  */
-function initAqiChartData() {
+function initAqiChartData(data) {
   // 将原始的源数据处理成图表需要的数据格式
   // 处理好的数据存到 chartData 中
+  for(var city in data){
+    dataArr.push(data[city]);
+  }
+  console.log(dataArr); 
 }
 
 /**
@@ -170,8 +215,9 @@ function initAqiChartData() {
 function init() {
   initGraTimeForm()
   initCitySelector();
-  initAqiChartData();
+  initAqiChartData(aqiSourceData);
   graTimeChange();
+  citySelectChange();
 }
 
 init();
