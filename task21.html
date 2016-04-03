@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>task20</title>
+	<script type="text/javascript" src="./scripts/task21.js"></script>
+	<style>
+		*{margin:0;padding:0;font-family: "微软雅黑";}
+		label{
+			font-size:25px;
+			margin:20px 0 20px 20px;
+		}
+		input{
+			width:150px;
+			height:25px;
+		}
+		.tags,.hobbys{
+			margin:30px 0;
+		}
+		.tag{
+			font-size:25px;
+			background-color: rgb(139, 200, 255);
+			color: #fff;
+			margin:10px;
+		}
+		.hobby{
+			font-size:25px;
+			background-color: rgb(255, 200, 131);
+			color: #fff;
+			margin:10px;
+		}
+		.delete{
+			background-color: red;
+			cursor: pointer;
+		}
+		button{
+			font-size:16px;
+			border:none;
+			width:80px;
+			height:24px;
+			cursor: pointer;
+		}
+	</style>
+</head>
+<body>
+	<label for="tag">Tag:</label>
+	<input type="text" id="tag" name="tag" placeholder="请输入标签" />
+	<div class="tags"></div>
+	<textarea rows="5" cols="30" id="text"></textarea>
+	<button id="confirm">确认爱好</button>
+	<div class="hobbys"></div>
+</body>
+</html>
