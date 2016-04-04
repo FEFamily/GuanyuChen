@@ -1,0 +1,203 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>task22_二叉树</title>
+	<style type="text/css">
+		.flex{
+			display:flex;
+			justify-content:space-around;
+			align-items:center;
+			border:1px solid black;
+		}
+		.parent{
+			width:400px;
+			height:100px;
+		}
+		.second{
+			width:180px;
+			height:80px;
+		}
+		.third{
+			width:80px;
+			height:60px;
+		}
+		.fourth{
+			width:35px;
+			height:30px;
+		}
+		button{
+			width:100px;
+			height:40px;
+			font-size:20px;
+			font-family: '微软雅黑';
+			border:none;
+		}
+	</style>
+	<script type="text/javascript">
+		window.onload = function(){
+			var front = document.getElementById('front'),
+				center = document.getElementById('center'),
+				behind = document.getElementById('behind'),
+				parent = document.getElementsByClassName('parent')[0],
+				div = document.getElementsByTagName('div'),
+				arr_f = new Array(),
+				arr_c = new Array(),
+				arr_b = new Array();
+
+			front.onclick = function(){
+				fronttrave(parent);
+			}
+
+			center.onclick = function(){
+				centertrave(parent);
+			}
+
+			behind.onclick = function(){
+				behindtrave(parent);
+			}
+
+			// 当前遍历的节点
+			function now(temp){
+				for(var i=0;i<div.length;i++){
+					div[i].style.backgroundColor = '#fff' ;
+				}
+				temp.style.backgroundColor = '#8DEEEE' ;
+				//背景色变蓝1s之后变回白色
+				setTimeout(function(){
+					temp.style.backgroundColor = '#fff' ;
+				},500);
+			}
+
+			// 判断节点是否遍历过
+			function isRepeat(node,arr){
+				var temp = true;
+				for(var i=0;i<arr.length;i++){
+					if (arr[i] == node) {
+						temp = false;
+					}
+				}
+
+				return temp;
+			}
+
+			// 前序
+			function fronttrave (parent) {
+				// 根
+				if (isRepeat(parent,arr_f)) {
+					now(parent);
+					arr_f.push(parent);
+				}
+
+				// 等待1s再向下搜索，与背景色的转换节奏一致
+				setTimeout(function(){
+					// 左右
+					if (parent.childNodes[1] && isRepeat(parent.childNodes[1],arr_f)) {
+						parent = parent.childNodes[1];
+						fronttrave(parent);
+					} else if (parent.childNodes[parent.childNodes.length-2] && isRepeat(parent.childNodes[parent.childNodes.length-2],arr_f)) {
+						parent = parent.childNodes[parent.childNodes.length-2];
+						fronttrave(parent);
+					} else if (isRepeat(parent.parentNode.childNodes[parent.parentNode.childNodes.length-2],arr_f)) {
+						if (parent.parentNode != document.body) {
+							parent = parent.parentNode.childNodes[parent.parentNode.childNodes.length-2];
+							fronttrave(parent);	
+						}
+					} else {
+						if (parent.parentNode != document.body) {
+							parent = parent.parentNode;
+							fronttrave(parent);
+						}
+					}
+				},500);
+			}
+
+			// 中序
+			function centertrave (parent) {
+				setTimeout(function(){
+					// 左右
+					if (parent.childNodes[1] && isRepeat(parent.childNodes[1],arr_c)) {
+						parent = parent.childNodes[1];
+						centertrave(parent);
+					} else {
+						if (isRepeat(parent,arr_c)) {
+							now(parent);
+							arr_c.push(parent);
+						}
+						if (parent.childNodes[parent.childNodes.length-2] && isRepeat(parent.childNodes[parent.childNodes.length-2],arr_c)) {
+							parent = parent.childNodes[parent.childNodes.length-2];
+							centertrave(parent);
+						} else if (parent.parentNode.childNodes[parent.parentNode.childNodes.length-2] && isRepeat(parent.parentNode.childNodes[parent.parentNode.childNodes.length-2],arr_c)) {
+							if (parent.parentNode != document.body) {
+								parent = parent.parentNode;
+								centertrave(parent);
+							}
+						} else {
+							if (parent.parentNode != document.body) {
+								parent = parent.parentNode;
+								centertrave(parent);
+							}
+						}
+					}
+				},500);
+			}
+
+			// 后序
+			function behindtrave (parent) {
+				setTimeout(function(){
+					if (parent.childNodes[1] && isRepeat(parent.childNodes[1],arr_b)) {
+						parent = parent.childNodes[1];
+						behindtrave(parent);
+					} else if (parent.childNodes[parent.childNodes.length-2] && isRepeat(parent.childNodes[parent.childNodes.length-2],arr_b)) {
+						parent = parent.childNodes[parent.childNodes.length-2];
+						behindtrave(parent);
+					} else {
+						if (isRepeat(parent,arr_b)) {
+							now(parent);
+							arr_b.push(parent);
+						}
+						if (parent.parentNode.childNodes[parent.parentNode.childNodes.length-2] && isRepeat(parent.parentNode.childNodes[parent.parentNode.childNodes.length-2],arr_b)) {
+							if (parent.parentNode != document.body) {
+								parent = parent.parentNode.childNodes[parent.parentNode.childNodes.length-2];
+								behindtrave(parent);	
+							}
+						} else {
+							if (parent.parentNode != document.body) {
+								parent = parent.parentNode;
+								behindtrave(parent);
+							}
+						}
+					}
+				},500);
+			}
+		}
+	</script>
+</head>
+<body>
+	<div class="flex parent">
+		<div class="flex second">
+			<div class="flex third">
+				<div class="flex fourth"></div>
+				<div class="flex fourth"></div>
+			</div>
+			<div class="flex third">
+				<div class="flex fourth"></div>
+				<div class="flex fourth"></div>
+			</div>
+		</div>
+		<div class="flex second">
+			<div class="flex third">
+				<div class="flex fourth"></div>
+				<div class="flex fourth"></div>
+			</div>
+			<div class="flex third">
+				<div class="flex fourth"></div>
+				<div class="flex fourth"></div>
+			</div>
+		</div>
+	</div>
+	<button id="front">前序遍历</button>
+	<button id="center">中序遍历</button>
+	<button id="behind">后序遍历</button>
+</body>
+</html>
