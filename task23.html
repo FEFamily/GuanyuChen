@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>task23_多叉树</title>
+	<link rel="stylesheet" type="text/css" href="./styles/tree.css">
+	<style type="text/css">
+		.parent{
+			width:1000px;
+		}
+		.first{
+			width:240px;
+			height:90px;
+		}
+		.second{
+			width:50px;
+		}
+	</style>
+	<script type="text/javascript">
+		window.onload = function(){
+			var parent = document.getElementsByClassName('parent')[0],
+				but = document.getElementsByTagName('button')[0],
+				inp = document.getElementById('text'),
+				div = document.getElementsByClassName('flex'),
+				arr = [];
+
+			but.onclick = function(){
+
+			}
+
+			// 当前遍历的节点
+			function now(temp){
+				for(var i=0;i<div.length;i++){
+					div[i].style.backgroundColor = '#fff' ;
+				}
+				temp.style.backgroundColor = '#8DEEEE' ;
+				//背景色变蓝1s之后变回白色
+				setTimeout(function(){
+					temp.style.backgroundColor = '#fff' ;
+				},500);
+			}
+
+			// 判断节点是否遍历过
+			function isRepeat(node,arr){
+				var temp = true;
+				for(var i=0;i<arr.length;i++){
+					if (arr[i] == node) {
+						temp = false;
+					}
+				}
+
+				return temp;
+			}
+
+			//先根
+			function fronttrave(parent) {
+				if (isRepeat(parent,arr)) {
+					now(parent);
+					arr.push(parent);
+				}
+
+				if (parent.childNodes) {
+					for (var i=0;i<parent.childNodes.length;i++) {
+						parent = parent.childNodes[i];
+						if (parent.nodeType == 1) {
+							fronttrave()
+						}
+					}
+				}
+			}
+		}
+	</script>
+</head>
+<body>
+	<div class="parent flex">
+		parent
+		<div class="first flex">
+			first_1
+			<div class="second flex">sec_1</div>
+		</div>
+		<div class="first flex">
+			first_2
+			<div class="second flex">sec_2</div>
+			<div class="second flex">sec_3</div>
+		</div>
+		<div class="first flex">
+			first_3
+			<div class="second flex">sec_4</div>
+			<div class="second flex">sec_5</div>
+			<div class="second flex">sec_6</div>
+		</div>
+		<div class="first flex">first_4</div>
+	</div>
+	<input type="text" placeholder="请输入要查询的节点值" id="text" />
+	<button>查询</button>
+</body>
+</html>

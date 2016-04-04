@@ -1,0 +1,35 @@
+.flex{
+	display:flex;
+	justify-content:space-around;
+	align-items:center;
+	border:1px solid black;
+}
+.parent{
+	width:400px;
+	height:100px;
+}
+.second{
+	width:180px;
+	height:80px;
+}
+.third{
+	width:80px;
+	height:60px;
+}
+.fourth{
+	width:35px;
+	height:30px;
+}
+button{
+	width:100px;
+	height:35px;
+	font-size:20px;
+	font-family: '微软雅黑';
+	border:none;
+}
+input{
+	width:250px;
+	height:30px;
+	font-size:20px;
+	line-height:30px;
+}
