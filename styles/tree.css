@@ -20,6 +20,11 @@
 	width:35px;
 	height:30px;
 }
+.inquire{
+	background-color: #D6D6D6;
+	color:#fff;
+	border-width:3px;
+}
 button{
 	width:100px;
 	height:35px;

@@ -18,18 +18,46 @@
 	</style>
 	<script type="text/javascript">
 		window.onload = function(){
-			var parent = document.getElementsByClassName('parent')[0],
-				but = document.getElementsByTagName('button')[0],
+			var par = document.getElementsByClassName('parent')[0],
+				front = document.getElementsByTagName('button')[0],
+				behind = document.getElementsByTagName('button')[1],
+				inqu = document.getElementsByTagName('button')[2],
 				inp = document.getElementById('text'),
 				div = document.getElementsByClassName('flex'),
-				arr = [];
+				arr_f = [],
+				arr_b = [],
+				flag = false;
 
-			but.onclick = function(){
+			front.onclick = function(){
+				fronttrave(par);
+				arr_f = [];          //当遍历完一遍树后，将节点数组清空
+			}
 
+			behind.onclick = function(){
+				behindtrave(par);
+				arr_b = [];
+			}
+
+			inqu.onclick = function(){
+				if (inp.value) {
+					fronttrave(par,inp.value);
+					arr_f = [];
+					//findLast(par);
+				}
+			}
+
+			//找到树的最后一个节点
+			function findLast(parent){
+				if (parent.childNodes[parent.childNodes.length-2]) {
+					parent = parent.childNodes[parent.childNodes.length-2] ;
+				} else {
+					console.log(parent);
+				}
 			}
 
 			// 当前遍历的节点
 			function now(temp){
+				// console.log(temp);
 				for(var i=0;i<div.length;i++){
 					div[i].style.backgroundColor = '#fff' ;
 				}
@@ -52,21 +80,65 @@
 				return temp;
 			}
 
-			//先根
-			function fronttrave(parent) {
-				if (isRepeat(parent,arr)) {
+			// 先根
+			function fronttrave(parent,text) {
+				if (isRepeat(parent,arr_f)) {
 					now(parent);
-					arr.push(parent);
-				}
-
-				if (parent.childNodes) {
-					for (var i=0;i<parent.childNodes.length;i++) {
-						parent = parent.childNodes[i];
-						if (parent.nodeType == 1) {
-							fronttrave()
-						}
+					arr_f.push(parent);
+					//console.log(parent.childNodes[0].nodeValue.trim()+'  '+text);
+					if (parent.childNodes[0].nodeValue.trim() == text) {
+						flag = true ;
+						//为了步调一致，向下遍历节点以及节点背景色变换时都要延迟500ms
+						setTimeout(function(){
+							parent.style.backgroundColor = 'blue' ;
+						},500);
+						alert('找到啦！！！');
+						return ;
 					}
 				}
+
+				setTimeout(function(){
+					if (parent.childNodes[1] && isRepeat(parent.childNodes[1],arr_f) && parent.childNodes[1].nodeType == 1) {
+						parent = parent.childNodes[1];
+						fronttrave(parent,text);
+					} else if (parent.nextSibling.nextSibling && isRepeat(parent.nextSibling.nextSibling,arr_f) && parent.nextSibling.nextSibling.nodeType == 1) {
+						parent = parent.nextSibling.nextSibling ;
+						fronttrave(parent,text);
+					} else {
+						if (parent.parentNode != par) {
+							parent = parent.parentNode;
+							fronttrave(parent,text);
+						}
+					}
+				},500);
+			}
+
+			// 后根
+			function behindtrave(parent){
+				setTimeout(function(){
+					if (parent.childNodes[1] && isRepeat(parent.childNodes[1],arr_b) && parent.childNodes[1].nodeType == 1) {
+						parent = parent.childNodes[1];
+						behindtrave(parent);
+					} else {
+						if (isRepeat(parent,arr_b)) {
+							now(parent);
+							arr_b.push(parent);
+						}
+
+						if (parent.nextSibling.nextSibling && isRepeat(parent.nextSibling.nextSibling,arr_b) && parent.nextSibling.nextSibling.nodeType == 1) {
+							// 判定parent.nextSibling.nextSibling的最后一个class是不是flex 把除树结构之外的元素都过滤掉
+							if (parent.nextSibling.nextSibling.className.split(' ')[1] == 'flex') {
+								parent = parent.nextSibling.nextSibling ;
+								behindtrave(parent);
+							}
+						} else {
+							if (parent.parentNode != document.body) {
+								parent = parent.parentNode;
+								behindtrave(parent);
+							}
+						}
+					}
+				},500);
 			}
 		}
 	</script>
@@ -89,9 +161,13 @@
 			<div class="second flex">sec_5</div>
 			<div class="second flex">sec_6</div>
 		</div>
-		<div class="first flex">first_4</div>
+		<div class="first flex">
+			first_4
+		</div>
 	</div>
+	<button id="front">先根遍历</button>
+	<button id="behind">后根遍历</button>
 	<input type="text" placeholder="请输入要查询的节点值" id="text" />
-	<button>查询</button>
+	<button id="inquire">查询</button>
 </body>
 </html>
