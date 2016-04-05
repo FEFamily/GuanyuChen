@@ -41,17 +41,13 @@
 			inqu.onclick = function(){
 				if (inp.value) {
 					fronttrave(par,inp.value);
+					inp.value = "";
 					arr_f = [];
-					//findLast(par);
-				}
-			}
-
-			//找到树的最后一个节点
-			function findLast(parent){
-				if (parent.childNodes[parent.childNodes.length-2]) {
-					parent = parent.childNodes[parent.childNodes.length-2] ;
-				} else {
-					console.log(parent);
+					setTimeout(function(){
+						if (!flag) {
+							alert('找不到该节点');
+						}
+					},10000);
 				}
 			}
 
