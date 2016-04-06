@@ -76,7 +76,7 @@
 				return temp;
 			}
 
-			// 先根
+			先根
 			function fronttrave(parent,text) {
 				if (isRepeat(parent,arr_f)) {
 					now(parent);
@@ -108,6 +108,26 @@
 					}
 				},500);
 			}
+			
+			// function fronttrave(parent,text) {
+			// 	if (isRepeat(parent,arr_f)) {
+			// 		now(parent);
+			// 		arr_f.push(parent);
+			// 		if (parent.childNodes[0].nodeValue.trim() == text) {
+			// 			flag = true ;
+			// 			//为了步调一致，向下遍历节点以及节点背景色变换时都要延迟500ms
+			// 			setTimeout(function(){
+			// 				parent.style.backgroundColor = 'blue' ;
+			// 			},500);
+			// 			alert('找到啦！！！');
+			// 			return ;
+			// 		}
+			// 	}
+
+			// 	if (parent.childNodes && ) {
+			// 		// statement
+			// 	}
+			// }
 
 			// 后根
 			function behindtrave(parent){
