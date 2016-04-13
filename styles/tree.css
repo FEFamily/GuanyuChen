@@ -1,16 +1,21 @@
 .flex{
 	display:flex;
+	flex-flow:row wrap;/*主轴方向左到右 允许多行*/
 	justify-content:space-around;
 	align-items:center;
 	border:1px solid black;
 }
 .parent{
-	width:400px;
-	height:100px;
+	width:800px;
+	height:300px;
+}
+.first{
+	width:300px;
+	height:140px;
 }
 .second{
-	width:180px;
-	height:80px;
+	width:80px;
+	height:70px;
 }
 .third{
 	width:80px;
@@ -31,6 +36,10 @@ button{
 	font-size:20px;
 	font-family: '微软雅黑';
 	border:none;
+}
+button:hover{
+	background-color: #DEDEDE;
+	color:#fff;
 }
 input{
 	width:250px;

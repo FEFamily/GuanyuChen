@@ -1,10 +1,38 @@
+<!--多叉树遍历，深度优先广度优先，节点的选择增加与删除的功能-->
 <!DOCTYPE html>
 <html lang="en">
 <head>
 	<meta charset="UTF-8">
 	<title>task24_增删节点</title>
+	<link rel="stylesheet" type="text/css" href="./styles/tree.css">
+	<style type="text/css">
+	</style>
 </head>
 <body>
-	
+	<div class="parent flex">
+		parent
+		<div class="first flex">
+			first_1
+			<div class="second flex">sec_1</div>
+		</div>
+		<div class="first flex">
+			first_2
+			<div class="second flex">sec_2</div>
+			<div class="second flex">sec_3</div>
+		</div>
+		<div class="first flex">
+			first_3
+			<div class="second flex">sec_4</div>
+			<div class="second flex">sec_5</div>
+			<div class="second flex">sec_6</div>
+		</div>
+		<div class="first flex">
+			first_4
+		</div>
+	</div>
+	<button id="front">深度优先</button>
+	<button id="behind">广度优先</button>
+	<input type="text" placeholder="请输入要查询的节点值" id="text" />
+	<button id="inquire">查询</button>
 </body>
 </html>
