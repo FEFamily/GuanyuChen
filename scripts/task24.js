@@ -15,7 +15,7 @@ window.onload = function(){
 	}
 
 	behind.onclick = function(){
-
+		BFS(parent);
 	}
 
 	inq.onclick = function(){
