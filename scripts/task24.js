@@ -52,20 +52,20 @@ window.onload = function(){
 
 	// 深度优先 栈实现
 	function DFS_stack(node){
-		console.log(node);
-		stack.push(node);
-		while (stack.length != 0) { // 当栈非空
-			//console.log(stack[stack.length-1].childNodes.length);
-			for (var i=0;i<stack[stack.length-1].childNodes.length;i++) {
-				if (stack[stack.length-1].childNodes[i].nodeType == 1 && isRepeat(stack[stack.length-1].childNodes[i],stack)) {
-					stack.push(stack[stack.length-1].childNodes[i]);
-					console.log(stack[stack.length-1].childNodes[i]);
-					break; // 跳出当前循环
-				} else {
-					stack.pop();
-				}
-			}
-		}
+		// console.log(node);
+		// stack.push(node);
+		// while (stack.length != 0) { // 当栈非空
+		// 	//console.log(stack[stack.length-1].childNodes.length);
+		// 	for (var i=0;i<stack[stack.length-1].childNodes.length;i++) {
+		// 		if (stack[stack.length-1].childNodes[i].nodeType == 1 && isRepeat(stack[stack.length-1].childNodes[i],stack)) {
+		// 			stack.push(stack[stack.length-1].childNodes[i]);
+		// 			console.log(stack[stack.length-1].childNodes[i]);
+		// 			break; // 跳出当前循环
+		// 		} else {
+		// 			stack.pop();
+		// 		}
+		// 	}
+		// }
 		
 	}
 
