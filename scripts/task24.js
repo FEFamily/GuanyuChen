@@ -55,7 +55,7 @@ window.onload = function(){
 		console.log(node);
 		stack.push(node);
 		while (stack.length != 0) { // 当栈非空
-			//console.log(stack[stack.length-1].childNodes.length);
+			console.log(stack[stack.length-1].childNodes.length);
 			for (var i=0;i<stack[stack.length-1].childNodes.length;i++) {
 				if (stack[stack.length-1].childNodes[i].nodeType == 1 && isRepeat(stack[stack.length-1].childNodes[i],stack)) {
 					stack.push(stack[stack.length-1].childNodes[i]);
