@@ -32,6 +32,7 @@
 				num.className = 'number' ;
 				if (div.childNodes.length <= 60) {
 					if (inp.value) {
+						inp.value = null;
 						div.insertBefore(num,div.childNodes[0]);
 
 						//每增加一个节点，对div的子节点进行冒泡排序
@@ -57,6 +58,7 @@
 				num.className = 'number' ;
 				if (div.childNodes.length <= 60) {
 					if (inp.value) {
+						inp.value = null;
 						div.appendChild(num);
 
 						//每增加一个节点，对div的子节点进行冒泡排序
