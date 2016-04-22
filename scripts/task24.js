@@ -1,7 +1,7 @@
 // 多叉树遍历，深度优先广度优先，节点的选择增加与删除的功能
 
 for (var i=0;i<div.length;i++) {	//为每个节点绑定选中事件
-	div[i].onmousedown = add_del;		
+	div[i].onmousedown = choose;		
 }
 
 front[0].onclick = function(){
@@ -19,7 +19,13 @@ behind[0].onclick = function(){
 	BFS(parent);
 }
 
-function add_del(event){
+inq.onclick = function(){
+	addNode(text.value);
+	text.value = '';
+}
+
+//选中节点 左键单击选中 右键单击生成删除按钮
+function choose(event){
 	tem = this;
 	document.oncontextmenu = function(event){	//去掉默认的contextmenu事件
 		event.preventDefault();
@@ -40,6 +46,7 @@ function add_del(event){
 		event.stopPropagation();	//阻止事件冒泡
 	}
 
+	//删除按钮
 	function del(x,y) {
 		var dialog = document.createElement('button');
 		dialog.className = 'dialog';
@@ -55,44 +62,28 @@ function add_del(event){
 		}
 	}
 
+	//删除节点
 	function delete_node(temp){
 		var par = temp.parentNode
 			pre = temp.previousSibling;
 		par.removeChild(temp);
-		par.removeChild(pre);
+		if (pre.nodeName == 'SPAN') {
+			par.removeChild(pre);
+		}
+		if (par.childNodes.length <= 1) {
+			par.parentNode.removeChild(par.previousSibling);
+		}
 	}
 
-	inq.onclick = function(){
-		// var cla = tem.className.split(' ')[0];
-		// switch (cla) {
-		// 	case 'parent':
-		// 		cla = 'first';
-		// 		break;
-		// 	case 'first':
-		// 		cla = 'second';
-		// 		break;
-		// 	case 'second':
-		// 		cla = 'third';
-		// 		break;
-		// 	case 'third':
-		// 		cla = 'fourth';
-		// 		break;
-		// 	default:
-		// 		console.log('类名出问题了');
-		// 		break;
-		// }
-		addNode(text.value);
-		text.value = '';
-	}
-
-	function addNode(text){
+	//增加节点
+	addNode = function(text){
 		var temp = document.createElement('div');
 		var tn = document.createTextNode(text);
 		temp.className = 'tree';
-		temp.onclick = add_del;
+		temp.onmousedown = choose;
 		temp.appendChild(tn);
 		tem.appendChild(temp);
-		if (tem.previousSibling.nodeName != 'SPAN') {
+		if (tem.previousSibling.nodeName != 'SPAN') {	//当新生成节点的父节点没有三角按钮时，新建一个并绑定显示隐藏事件
 			console.log(tem.previousSibling.nodeName);
 			var n = addTri(tem);
 			n.onclick = dis_hide;
