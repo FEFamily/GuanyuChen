@@ -13,6 +13,15 @@
 
 ####task24
 多叉树遍历分为深度优先遍历和广度优先遍历。深度优先遍历可以用递归实现和栈实现；广度优先遍历可以用递归实现和队列实现  
-节点点击事件应用了闭包
+节点点击事件应用了闭包  
+
+####task25
+CSS实现三角形
+
+    width: 0;/*方向向下*/
+    height: 0;
+    border-left: 50px solid transparent;/*左*/
+    border-right: 50px solid transparent;/*右*/
+    border-top: 100px solid red;/*上*/
 
 

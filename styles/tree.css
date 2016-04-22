@@ -1,3 +1,4 @@
+*{margin:0;padding:0;font-family: "微软雅黑";}
 .flex{
 	display:flex;
 	flex-flow:row wrap;/*主轴方向左到右 允许多行*/
@@ -57,4 +58,7 @@ input{
 	height:30px;
 	font-size:20px;
 	line-height:30px;
+}
+div{
+	display:inline-block;
 }
