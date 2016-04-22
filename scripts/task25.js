@@ -1,5 +1,7 @@
 for(var k=0;k<div.length;k++){
-	addTri(div[k]);	//为树的每个节点添加三角按钮
+	if (div[k].childNodes.length > 1) {
+		addTri(div[k]);	//为树的每个有子节点的节点添加三角按钮
+	}
 }
 
 var dis = document.getElementsByClassName('triangle-right');
@@ -10,6 +12,8 @@ var	hid = document.getElementsByClassName('triangle-down');
 for (var j=0;j<hid.length;j++) {
 	hid[j].onclick = dis_hide;
 }
+
+sel.onclick = select;
 
 //新建三角按钮
 function addTri(node){
@@ -39,5 +43,18 @@ function dis_hide(){
 			}
 		}
 		this.className = 'triangle-right';
+	}
+}
+
+function select(){
+	var result = DFS_stack(parent,text.value);
+	res(result);
+
+	function res(result){
+		if (result.parentNode.className.indexOf(' tree') > 0) {
+			result = result.parentNode;
+			result.previousSibling.className = 'triangle-down';
+			res(result);
+		}
 	}
 }

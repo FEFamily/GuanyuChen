@@ -10,6 +10,7 @@
 	flex-flow:column nowrap;
 	justify-content:space-between;
 	align-items:center; */
+	display:inline-block;
 }
 .triangle-right{
 	display:inline-block;

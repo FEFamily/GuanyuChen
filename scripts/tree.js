@@ -4,10 +4,12 @@ var front = document.getElementsByClassName('front'),
 	inq = document.getElementById('inquire'),
 	div = document.getElementsByClassName('tree'),
 	parent = document.getElementsByClassName('tree')[0],
+	sel = document.getElementById('sel'),
 	stack = [],
 	arr = [],	//将访问过的节点放入该数组
 	queue = [],
-	tem = null;
+	tem = null,
+	flag = false;
 
 // 深度优先 递归实现
 function DFS_rec(node) {
@@ -28,10 +30,15 @@ function DFS_rec(node) {
 }
 
 // 深度优先 栈实现
-function DFS_stack(node){
+function DFS_stack(node,text){
 	console.log(node);
 	stack.push(node);	//根节点入栈
 	arr.push(node);	//访问过的节点
+	// if (node.childNodes[0].nodeValue.trim() == text) {
+	// 	flag = true;
+	// 	alert('找到啦！！！');
+	// 	return node;
+	// }
 	var temp = null;
 
 	while (stack.length != 0) {		//当栈非空
