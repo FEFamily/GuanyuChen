@@ -26,8 +26,9 @@ function addTri(node){
 
 //控制显示或隐藏
 function dis_hide(){
-	var cla = this.className,
-		son = this.nextSibling.childNodes;
+	var that = this;
+	var cla = that.className,
+		son = that.nextSibling.childNodes;
 	if (cla == 'triangle-right') {//当前隐藏
 		for (var i=1;i<son.length;i++) {
 			if (son[i].nodeType == 1) {
@@ -35,25 +36,35 @@ function dis_hide(){
 				son[i].style.marginLeft += 20+'px' ;
 			}
 		}
-		this.className = 'triangle-down';
+		that.className = 'triangle-down';
 	} else {
 		for (var i=1;i<son.length;i++) {
 			if (son[i].nodeType == 1) {
 				son[i].style.display = 'none';
 			}
 		}
-		this.className = 'triangle-right';
+		that.className = 'triangle-right';
 	}
 }
 
 function select(){
 	var result = DFS_stack(parent,text.value);
+	stack = [];	//遍历函数执行完毕之后一定要清空用到的数组
+	arr = [];
+	text.value = '';
 	res(result);
 
 	function res(result){
 		if (result.parentNode.className.indexOf(' tree') > 0) {
 			result = result.parentNode;
+			for (var i=1;i<result.childNodes.length;i++) {
+				if (result.childNodes[i].nodeType == 1) {
+					result.childNodes[i].style.display = 'block';
+					result.childNodes[i].style.marginLeft += 20+'px' ;
+				}
+			}
 			result.previousSibling.className = 'triangle-down';
+			console.log(result);
 			res(result);
 		}
 	}

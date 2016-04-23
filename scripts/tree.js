@@ -8,8 +8,7 @@ var front = document.getElementsByClassName('front'),
 	stack = [],
 	arr = [],	//将访问过的节点放入该数组
 	queue = [],
-	tem = null,
-	flag = false;
+	tem = null;
 
 // 深度优先 递归实现
 function DFS_rec(node) {
@@ -34,16 +33,18 @@ function DFS_stack(node,text){
 	console.log(node);
 	stack.push(node);	//根节点入栈
 	arr.push(node);	//访问过的节点
-	// if (node.childNodes[0].nodeValue.trim() == text) {
-	// 	flag = true;
-	// 	alert('找到啦！！！');
-	// 	return node;
-	// }
 	var temp = null;
 
 	while (stack.length != 0) {		//当栈非空
 		temp = stack[stack.length-1];	//	temp取栈顶的元素
+		if (temp.childNodes[0].nodeValue.trim() == text) {
+			alert('找到啦！！！');
+			return temp;
+		}
 		for(var i=0;i<temp.childNodes.length;i++){
+			if (temp.childNodes[i].nodeName == 'SPAN') {	//如果temp的子元素的nodeName是SPAN 就跳出 执行下一次循环
+				continue;
+			}
 			if (temp.childNodes[i].nodeType == 1 && isRepeat(temp.childNodes[i],arr)) {	//存在并找到temp的子节点且未访问过
 				console.log(temp.childNodes[i]);
 				stack.push(temp.childNodes[i]);		//访问并入栈
