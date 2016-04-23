@@ -17,9 +17,9 @@ function DFS_rec(node) {
 		arr.push(node);
 	}
 	if (node.childNodes[1] && isRepeat(node.childNodes[1],arr)) { // 当还有未访问过的子节点时，将子节点赋给当前节点
-		node = node.childNodes[1];
+		node.childNodes[1].nodeName == 'SPAN'?node = node.childNodes[2]:node = node.childNodes[1];
 	} else if (node.nextSibling.nextSibling) { // 当还有下邻节点时，下邻节点赋给当前节点
-		node = node.nextSibling.nextSibling;
+		node.nextSibling.nextSibling.nodeName == 'SPAN'?node = node.nextSibling.nextSibling.nextSibling:node = node.nextSibling.nextSibling;
 	} else if (node.parentNode != div[0]) { // 当父节点不是根节点时，父节点赋给当前节点
 		node = node.parentNode;
 	} else { // 当树遍历到结尾时，退出函数
