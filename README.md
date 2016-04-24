@@ -24,4 +24,18 @@ CSS实现三角形
     border-right: 50px solid transparent;/*右*/
     border-top: 100px solid red;/*上*/
 
+原生JS操作外联样式
+
+    window.getComputedStyle('元素','伪类'); //这个方法获取当前元素*所有属性*的最终值  只读，不能设置
+    
+    //在TE6~8，上面方法不受支持
+    element.currentStyle;   //返回元素当前应用的最终CSS值(包括外联样式)
+    
+    window.getComputedStyle(element,null).getPropertyValue('属性名');   //获取CSS样式申明对象上的属性名 属性名不需要驼峰写法
+    
+    //IE下
+    style.getAttribute('属性名');  //属性名需要驼峰写法
+
+
+
 

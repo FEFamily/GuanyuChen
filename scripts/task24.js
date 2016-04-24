@@ -69,6 +69,7 @@ function choose(event){
 		par.removeChild(temp);
 		if (pre.nodeName == 'SPAN') {
 			par.removeChild(pre);
+			par.style.height = (par.style.height - 26) +'px'
 		}
 		if (par.childNodes.length <= 1) {
 			par.parentNode.removeChild(par.previousSibling);
@@ -83,6 +84,7 @@ function choose(event){
 		temp.onmousedown = choose;
 		temp.appendChild(tn);
 		tem.appendChild(temp);
+		tem.style.height += 26 + 'px';
 		if (tem.previousSibling.nodeName != 'SPAN') {	//当新生成节点的父节点没有三角按钮时，新建一个并绑定显示隐藏事件
 			console.log(tem.previousSibling.nodeName);
 			var n = addTri(tem);

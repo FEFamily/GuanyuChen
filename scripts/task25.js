@@ -20,6 +20,12 @@ function addTri(node){
 	var temp = document.createElement('span');
 	temp.className = 'triangle-right';
 	node.parentNode.insertBefore(temp,node);
+	temp.style.position = 'relative';
+	//temp.style.left = -24 + 'px';
+	//temp.style.top = 24 + 'px';
+	if (window.getComputedStyle(temp.nextSibling).display == 'none') {
+		temp.style.display = 'none';
+	}
 	return temp;
 }
 
@@ -28,14 +34,19 @@ function addTri(node){
 function dis_hide(){
 	var that = this;
 	var cla = that.className,
-		son = that.nextSibling.childNodes;
+		son = that.nextSibling.childNodes,
+		par = that.nextSibling,
+		sum = 0;
 	if (cla == 'triangle-right') {//当前隐藏
 		for (var i=1;i<son.length;i++) {
 			if (son[i].nodeType == 1) {
 				son[i].style.display = 'block';
 				son[i].style.marginLeft += 20+'px' ;
+				sum++;
 			}
 		}
+		console.log(sum);
+		par.style.height = (sum+1)*26 + 'px'
 		that.className = 'triangle-down';
 	} else {
 		for (var i=1;i<son.length;i++) {
@@ -43,6 +54,7 @@ function dis_hide(){
 				son[i].style.display = 'none';
 			}
 		}
+		par.style.height = 24 + 'px';
 		that.className = 'triangle-right';
 	}
 }
