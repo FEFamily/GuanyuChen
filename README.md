@@ -36,6 +36,13 @@ CSS实现三角形
     //IE下
     style.getAttribute('属性名');  //属性名需要驼峰写法
 
+PS:最终树的节点结构应为  
+    
+    <div class = 'tree'>
+        <span class = 'triangle-right'><sapn>
+        <p>节点值</p>
+    </div>
+
 
 
 
