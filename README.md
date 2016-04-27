@@ -41,6 +41,9 @@ PS:最终树的节点结构应为
     <div class = 'tree'>
         <span class = 'triangle-right'><sapn>
         <p>节点值</p>
+        ...
+        子节点
+        ...
     </div>
 
 
