@@ -13,10 +13,78 @@
 	height:inherit;
 	display:inline-block;
 	position:inherit;
+	transition:-webkit-clip-path 2s;
 }
-img:first-child{
+#images>img:hover{
+	-webkit-clip-path: polygon(0 0, 100% 0, 100% 100%, 0 100%);
+}
+/*主要思想是根据图片个数的不同来切换class*/
+/*两张*/
+.two:nth-child(1){
 	-webkit-clip-path: polygon(0 0, 67% 0, 33% 100%, 0 100%);
 }
-img:nth-child(2){
+.two:nth-child(2){
 	-webkit-clip-path: polygon(67% 0, 100% 0, 100% 100%, 33% 100%);
+}
+
+/*三张*/
+.three:nth-child(1){
+	-webkit-clip-path: polygon(0 0, 67% 0, 67% 100%, 0 100%);
+}
+.three:nth-child(2){
+	-webkit-clip-path: polygon(67% 0, 100% 0, 100% 50%, 67% 50%);
+}
+.three:nth-child(3){
+	-webkit-clip-path: polygon(67% 50%, 100% 50%, 100% 100%, 67% 100%);
+}
+
+/*四张*/
+.four:nth-child(1){
+	-webkit-clip-path: polygon(0 0, 50% 0, 50% 50%, 0 50%);
+}
+.four:nth-child(2){
+	-webkit-clip-path: polygon(50% 0, 100% 0, 100% 50%, 50% 50%);
+}
+.four:nth-child(3){
+	-webkit-clip-path: polygon(0 50%, 50% 50%, 50% 100%, 0 100%);
+}
+.four:nth-child(4){
+	-webkit-clip-path: polygon(50% 50%, 100% 50%, 100% 100%, 50% 100%);
+}
+
+/*五张*/
+.five:nth-child(1){
+	-webkit-clip-path: polygon(0 0, 67% 0, 67% 67%, 0 67%);
+}
+.five:nth-child(2){
+	-webkit-clip-path: polygon(67% 0, 100% 0, 100% 33%, 67% 33%);
+}
+.five:nth-child(3){
+	-webkit-clip-path: polygon(0 67%, 33% 67%, 33% 100%, 0 100%);
+}
+.five:nth-child(4){
+	-webkit-clip-path: polygon(33% 67%, 67% 67%, 67% 100%, 33% 100%);
+}
+.five:nth-child(5){
+	-webkit-clip-path: polygon(67% 33%, 100% 33%, 100% 100%, 67% 100%);
+}
+
+/*六张*/
+.six:nth-child(1){
+	-webkit-clip-path: polygon(0 0, 67% 0, 67% 67%, 0 67%);
+}
+.six:nth-child(2){
+	-webkit-clip-path: polygon(67% 0, 100% 0, 100% 33%, 67% 33%);
+}
+.six:nth-child(3){
+	-webkit-clip-path: polygon(0 67%, 33% 67%, 33% 100%, 0 100%);
+}
+.six:nth-child(4){
+	-webkit-clip-path: polygon(33% 67%, 67% 67%, 67% 100%, 33% 100%);
+}
+.six:nth-child(5){
+	-webkit-clip-path: polygon(67% 33%, 100% 33%, 100% 67%, 67% 67%);
+}
+.six:nth-child(6){
+	-webkit-clip-path: polygon(67% 67%, 100% 67%, 100% 100%, 67% 100%);
 }
