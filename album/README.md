@@ -27,7 +27,7 @@
 
 `clip-path`填补了`transform`变换的不足
 
-polygon`变形重要条件：坐标的数目变形前后必须一致.
+`polygon`变形重要条件：坐标的数目变形前后必须一致.
 
 `clip-path`四种函数  
 
