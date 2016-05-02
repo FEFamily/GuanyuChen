@@ -1,0 +1,12 @@
+*{margin:0;padding:0;font-family: '微软雅黑';}
+
+#content{
+	position: relative;
+	margin:0 auto;
+}
+
+.row{
+	display:inline-block;
+	height:100px;
+	background-color: #f0f0f0;
+}
