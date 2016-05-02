@@ -18,6 +18,17 @@
 #images>img:hover{
 	-webkit-clip-path: polygon(0 0, 100% 0, 100% 100%, 0 100%);
 }
+
+#add{
+	width:150px;
+	height:40px;
+	border:none;
+	background-color: #EBEBEB;
+	font-size:20px;
+	display:block;
+	margin:0 auto;
+}
+
 /*主要思想是根据图片个数的不同来切换class*/
 /*两张*/
 .two:nth-child(1){
